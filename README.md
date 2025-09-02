@@ -13,6 +13,11 @@ npm install dan composer install
 4. Try to connect to migrate to the database and seeds.
 
 ```bash
+php artisan migrate
+```
+
+Refresh Database
+```bash
 php artisan migrate:fresh --seed
 ```
 
