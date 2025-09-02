@@ -52,7 +52,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug, Post $post)
+    public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
         return view('dashboard.show', ['post' => $post]);
@@ -61,24 +61,41 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+
+        return view('dashboard.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request)
     {
-        //
+        // Data perlu di-validasi dulu jika memungkinkan
+        // Let's skip it for now
+
+        $post = Post::find($request->id); 
+
+        // Edit data sebelumnya dari post yang akan di-edit
+        $post->title = $request->title;
+        $post->category_id = $request->category;
+        $post->slug = Str::slug($request->title); // Buat slug baru karena judul berubah
+        $post->body = $request->body;
+        $post->updated_at = now();
+        
+        $post->save(); // Simpan post dengan data yang telah diubah.
+
+        return redirect()->route('dashboard')->with('success', "Data berhasil di update!"); // with() digunakan bila di frontend ingin menampilkan success message, misal dengan menggunakan toast.
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        //
+        dd($request->all());
     }
 }

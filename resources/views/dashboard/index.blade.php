@@ -40,7 +40,7 @@
                                     </div>
                                     <div
                                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                        <a href={{route('dashboard.post.create')}}
+                                        <a href={{ route('dashboard.post.create') }}
                                             class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -94,9 +94,7 @@
                                                             <ul class="py-1 text-sm"
                                                                 aria-labelledby="post-{{ $post->id }}-dropdown-button">
                                                                 <li>
-                                                                    <button type="button"
-                                                                        data-modal-target="updateProductModal"
-                                                                        data-modal-toggle="updateProductModal"
+                                                                    <a href={{ route('dashboard.post.edit', ['id' => $post->id]) }}
                                                                         class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                                                         <svg class="w-4 h-4 mr-2"
                                                                             xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +107,7 @@
                                                                                 d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
                                                                         </svg>
                                                                         Edit
-                                                                    </button>
+                                                                    </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="{{ route('dashboard.post.show', ['slug' => $post->slug]) }}"
@@ -160,7 +158,7 @@
                         </div>
                     </section>
                     <!-- End block -->
-                    
+
                     <!-- Update modal -->
                     <div id="updateProductModal" tabindex="-1" aria-hidden="true"
                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
