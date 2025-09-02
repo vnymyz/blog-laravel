@@ -14,7 +14,9 @@ class Post extends Model
         'title',
         'author',
         'slug',
-        'body'
+        'body',
+        'author_id',
+        'category_id',
     ];
 
     // membuat eager loading nya di model biar enggak perlu ubah2 di rute kita

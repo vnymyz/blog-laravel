@@ -54,9 +54,15 @@ Route::get('/hello', function () {
     return 'hello semuanya';
 });
 
-Route::get('/dashboard', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard/{slug}', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard.show');
+// Route untuk dashboard dan CRUD data post
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/post/create', [PostController::class, 'create'])->name('dashboard.post.create');
+    Route::post('/dashboard/post/create', [PostController::class, 'store'])->name('dashboard.post.store');
+    Route::get('/dashboard/post/{slug}', [PostController::class, 'show'])->name('dashboard.post.show');
+});
 
+// Route untuk profile management
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
