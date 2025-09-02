@@ -7,7 +7,7 @@
 3. Install the dependencies from package.json.
 
 ```bash
-npm install or composer install
+npm install dan composer install
 ```
 
 4. Try to connect to migrate to the database and seeds.
