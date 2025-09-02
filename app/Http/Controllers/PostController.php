@@ -46,7 +46,7 @@ class PostController extends Controller
             'updated_at' => now(),
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Post created successfully!');
     }
 
     /**
@@ -88,7 +88,7 @@ class PostController extends Controller
         
         $post->save(); // Simpan post dengan data yang telah diubah.
 
-        return redirect()->route('dashboard')->with('success', "Data berhasil di update!"); // with() digunakan bila di frontend ingin menampilkan success message, misal dengan menggunakan toast.
+        return redirect()->route('dashboard')->with('success', "Post updated!"); // with() digunakan bila di frontend ingin menampilkan success message, misal dengan menggunakan toast.
     }
 
     /**
@@ -96,6 +96,11 @@ class PostController extends Controller
      */
     public function destroy(Request $request, Post $post)
     {
-        dd($request->all());
+        Post::destroy($request->id);
+        
+        // Bisa lakukan cek apakah operasi delete berhasil atau gagal disini
+        // For now, let's skip it. Mari kita asumsikan semua berjalan lancar.
+
+        return redirect()->route('dashboard')->with('success', 'Post deleted successfully!');
     }
 }

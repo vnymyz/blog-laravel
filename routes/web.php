@@ -61,7 +61,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/dashboard/post/create', [PostController::class, 'store'])->name('dashboard.post.store');
     Route::get('/dashboard/post/edit/{id}', [PostController::class, 'edit'])->name('dashboard.post.edit');
     Route::post('/dashboard/post/edit', [PostController::class, 'update'])->name('dashboard.post.update');
-    Route::post('/dashboard/post/destroy', [PostController::class, 'destroy'])->name('dashboard.post.destroy');
+    Route::delete('/dashboard/post/destroy', [PostController::class, 'destroy'])->name('dashboard.post.destroy');
     Route::get('/dashboard/post/{slug}', [PostController::class, 'show'])->name('dashboard.post.show');
 });
 
