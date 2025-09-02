@@ -55,6 +55,7 @@ Route::get('/hello', function () {
 });
 
 Route::get('/dashboard', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/{slug}', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
