@@ -20,6 +20,7 @@
                         <!-- Modal body -->
                         <form action={{ route('dashboard.post.update') }} method="POST">
                             @csrf
+                            @method('PUT')
                             {{-- Input hidden ini digunakan untuk kirim id post yang akan di-update datanya --}}
                             {{-- Tidak akan tampil di view --}}
                             <input type="hidden" name="id" value="{{$post->id}}">
