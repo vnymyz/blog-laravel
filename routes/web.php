@@ -54,14 +54,16 @@ Route::get('/hello', function () {
     return 'hello semuanya';
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 // membuat dashboard baru
 Route::get('/dashboard', [PostDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-// 
+// Tambah Post baru
+Route::post('/dashboard', [PostDashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// route untuk create post dan ini harus diatas route show biar gak ketangkep duluan
+Route::get('/dashboard/create', [PostDashboardController::class, 'create'])->middleware(['auth', 'verified']);
+
+//show dashboard post by slug
 Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

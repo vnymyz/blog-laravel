@@ -10,12 +10,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
      use HasFactory;
+
+    //  ini semua boleh diisi lewat form
      protected $fillable = [
         'title',
-        'author',
+        'author_id',
+        'category_id',
         'slug',
         'body'
     ];
+
+    // atau bisa pake guarded jadi semuanya boleh kecuali id
+    // protected $guarded = ['id'];
 
     // membuat eager loading nya di model biar enggak perlu ubah2 di rute kita
     // kalau eager loading nya kita matiin nanti error atau terdeteksi ada yg make lazy loading
