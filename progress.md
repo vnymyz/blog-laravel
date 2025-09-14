@@ -73,7 +73,7 @@ Secure Connection: Required, either SSL (port 465) or TLS (port 587).
 
 ### 6. Jumat, 22 Agustus 2025 - Bug atau typo di LoginRequest.php
 
-### 7. Senin, 25 Agustus 2025 - Melanjutkan
+### 7. Senin, 25 Agustus 2025 - Penambahan dan Penggabungan Kode
 
 1. Menambahkan skema username unique di create users table di migrasi.
 
@@ -118,3 +118,27 @@ php artisan migrate:fresh --seed
 11. Memperbaiki navbar halaman post D:\laragon\www\belajar-laravel\web-blog\resources\views\components\navbar.blade.php
 
 12. membuat semisal user belum login ada tombol login saja di navbar.
+
+### 8. Jumat, 12 September Update Controller (CRUD)
+
+1. Dokumentasi Controller : https://laravel.com/docs/12.x/controllers#main-content
+
+2. php artisan make:controller PostDashboardController - Membuat Controller baru di cmd
+
+3. Untuk Menangani semua resource controller : https://laravel.com/docs/12.x/controllers#resource-controllers
+
+4. php artisan make:controller PostDashboardController --resource di cmd
+
+5. Update on : D:\laragon\www\1. web-blog\app\Http\Controllers\PostDashboardController.php
+
+6. Update on : D:\laragon\www\1. web-blog\resources\views\dashboard.blade.php
+
+7. Update on : D:\laragon\www\1. web-blog\routes\web.php
+
+8 Menambahkan UI untuk tampilan post dashboard menggunakan flowbite : https://learn.wpucourse.id/member/course/SkDQxGYr445D0DwVd1soz/4/8
+
+9. Buat folder baru untuk komponen UI dashboard post : D:\laragon\www\1. web-blog\resources\views\components\posts
+
+10. nambah crud layouts dari flowbite : resources\views\components\posts\table.blade.php
+
+### 9. Minggu, 14 September 2025 - lanjutin selesain crud
