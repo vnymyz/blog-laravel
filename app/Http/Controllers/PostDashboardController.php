@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostDashboardController extends Controller
 {
@@ -13,7 +14,16 @@ class PostDashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard', ['posts' => Post::latest()->paginate(10)]);
+        // tampilin post yang hanya ditulis oleh author yg login aja
+        $posts = Post::latest()->where('author_id', Auth::user()->id); 
+
+        // jika ada pencarian maka tampilkan hasil pencarian
+        if(request('keyword')){
+            $posts->where('title', 'like', '%'. request('keyword') . '%');
+        }
+
+        // withQueryString() biar pas pindah halaman pagination keywordnya tetap ada
+        return view('dashboard.index', ['posts' => $posts->paginate(5)->withQueryString()]);
     }
 
     /**
@@ -38,9 +48,9 @@ class PostDashboardController extends Controller
      * Display the specified resource.
      * menampilkan data berdasarkan id
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return view('dashboard.show', ['post' => $post]);
     }
 
     /**
